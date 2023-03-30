@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <label id="doc">Doctors</label>
+    <select id="seldoc">
+
+    </select>
+    <label id="pat">Patient</label>
+    <select id="selpat">
+
+    </select>
+    
+    <button onclick="submit()">submit</button>
+    <table id="table"></table>
+    <script type="module" src="/main.js"></script>
+    <script>
+        //  function submit(data){
+        //  var display = document.getElementById("table")
+        //  var doc =document.getElementById("doc")
+        //  var pat =document.getElementById("pat")
+
+
+        let data = fetch("data.json")
+        .then((res)=>{
+            return res.json()
+        })
+        .then((result)=>{
+            console.log(result);
+           var box =`<tr><th></th><th></th><th></th><th></th></tr>`
+
+               for (const i in result['Doctors']) {
+                    const element = result['Doctors'][i];
+                    const k = element['Id'];
+                    const l = element['Name'];
+                    console.log(k,l);
+                      $(`<option value="${k}">${l}</option>`).appendTo('#seldoc')
+                  }
+
+
+                  for (const i in result['patients']) {
+                    const element = result['patients'][i];
+                    const k = element['Id'];
+                    const l = element['Name'];
+                    console.log(k,l);
+                      $(`<option value="${k}">${l}</option>`).appendTo('#selpat')
+                  }
+
+            // for (const i in result['patients']) {
+            //         const element = result['patients'][i];
+
+            // console.log(element);
+    
+            // }
+
+            // for (const i in result['Treatment']) {
+            //         const element = result['Treatment'][i];
+            // console.log(element);
+    
+            // }
+        })
+
+        
+          
+    //  }
