@@ -19,9 +19,9 @@
     <select id="selpat">
 
     </select>
-    
-    <button onclick="submit()">submit</button>
-    <table id="table"></table>
+
+    <button id="submit">submit</button>
+    <table id="tabledata"></table>
     <script type="module" src="/main.js"></script>
     <script>
         //  function submit(data){
@@ -30,45 +30,75 @@
         //  var pat =document.getElementById("pat")
 
 
-        let data = fetch("data.json")
-        .then((res)=>{
-            return res.json()
-        })
-        .then((result)=>{
-            console.log(result);
-           var box =`<tr><th></th><th></th><th></th><th></th></tr>`
 
-               for (const i in result['Doctors']) {
+
+
+        let data = fetch("data.json")
+            .then((res) => {
+                return res.json()
+            })
+            .then((result) => {
+                console.log(result);
+                for (const i in result['Doctors']) {
                     const element = result['Doctors'][i];
                     const k = element['Id'];
                     const l = element['Name'];
-                    console.log(k,l);
-                      $(`<option value="${k}">${l}</option>`).appendTo('#seldoc')
-                  }
-
-
-                  for (const i in result['patients']) {
+                    console.log(k, l);
+                    $(`<option value="${k}">${l}</option>`).appendTo('#seldoc')
+                }
+                for (const i in result['patients']) {
                     const element = result['patients'][i];
                     const k = element['Id'];
                     const l = element['Name'];
-                    console.log(k,l);
-                      $(`<option value="${k}">${l}</option>`).appendTo('#selpat')
-                  }
+                    console.log(k, l);
+                    $(`<option value="${k}">${l}</option>`).appendTo('#selpat')
+                }
+                for (const i in result['Treatment']) {
+                    const element = result['Treatment'][i];
+                    const k = element['Id'];
+                    const l = element['patientId'];
+                    const m = element['doctorId'];
+                    console.log(k, l, m);
+                    // $(`<option value="${k}">${l}</option>`).appendTo('#selpat')
+                }
+         
+                $("#submit").click(function () {
+                    $('#tabledata').empty();
+                    var box = `<tr><th>DoctorID</th><th>DoctorName</th><th>PatientID</th><th>PatientName</th></tr>`
+                    $(box).appendTo("#tabledata");
+                    doctor = $("#seldoc").val();
+                    patient = $("#selpat").val();
+                    let trit = result['Treatment'][result['Treatment'].length - 1]["Id"] + 1;
+                    let dd = {
+                        Id: trit,
+                        patientId: parseInt(patient),
+                        doctorId: parseInt(doctor),
+                    };
+                    result['Treatment'].push(dd);
+                    console.log(result['Treatment']);   
+                    var box="";                
+                    for (const i in result['Treatment']) {
+                        const element = result['Treatment'][i];
+                           box = $("<tr></tr>")
+                    let doctor= result['Doctors'].filter((e)=>{return e.Id==element.doctorId}) 
+                    let patient= result['patients'].filter((e)=>{return e.Id==element.patientId})
+                        $("<td></td>").text(doctor[0].Id).appendTo(box)
+                        $("<td></td>").text(doctor[0].Name).appendTo(box)
+                        $("<td></td>").text(patient[0].Id).appendTo(box)
+                        $("<td></td>").text(patient[0].Name).appendTo(box)
 
-            // for (const i in result['patients']) {
-            //         const element = result['patients'][i];
+                        $(box).appendTo("#tabledata")
+                    }
+                })
+            }
 
-            // console.log(element);
-    
-            // }
 
-            // for (const i in result['Treatment']) {
-            //         const element = result['Treatment'][i];
-            // console.log(element);
-    
-            // }
-        })
 
-        
-          
-    //  }
+            )
+
+
+
+    </script>
+</body>
+
+</html>
