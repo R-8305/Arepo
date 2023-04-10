@@ -1,1 +1,392 @@
-Hello Everyone,Hope you are doing good.All the Best!!
+question 1
+[Thursday 21:52] Bhuvneshwari Balapure
+
+
+
+Create one Students Name Array and store 5 student names 
+Create One Subjects Array ands store 5 subject 
+Bind Students in one dropdown 
+Bind Subjects in second dropdown from the arrays.
+ Add score field as textbox input in the form. Add one button named ‘Get Score’. On button click store the data in the list.
+
+Calculate result based on 100% scores & display in tabular format with Student Name, subjects(all subjects columns) and result.
+
+However, there is one more thing to mention: the pass mark is 100% in each Subject!            
+
+StudentName	HTML	CSS	JavaScript	TypeScript	Result
+Riya	50	64	100	46	Fail
+Kajal	100	100	100	100	Pass
+Hemant	100	90	100	70	Fail
+
+Notes:
+
+Each student should score 100% in each subject to pass, otherwise he/she will be considered as failed.
+
+Display table data as student names sorted alphabetically.
+--------------------------------------------------------------------------------------------------------------------
+
+Question 2 
+
+
+
+Bind Doctors Object to the DropDown( Option Value ID,Option text Name)
+Bind Patient Object to the another DropDown ( Option Value ID,Option text Name)
+Create one Submit Button on button click Object should be inserted in the Treatment objects Array and unique number should be generate to create a treatment id. 
+ Appointment List should be displayed in the tabular format.  
+
+Following fields required
+
+DoctorID
+DoctorName
+PatientID
+PatientName
+
+const DocterAndPatientList = {
+
+  "Doctors": [
+
+    {
+
+      "Id": 1,
+
+      "Name": "Dr. Bhargav"
+
+    },
+
+    {
+
+      "Id": 2,
+
+      "Name": "Dr. Karan"
+
+    },
+
+    {
+
+      "Id": 3,
+
+      "Name": "Dr. Sanket"
+
+    }
+
+  ],
+
+  "patients": [
+
+    {
+
+      "Id": 101,
+
+      "Name": "Mihir"
+
+    },
+
+    {
+
+      "Id": 102,
+
+      "Name": "Henil"
+
+    },
+
+    {
+
+      "Id": 103,
+
+      "Name": "Darshil"
+
+    },
+
+    {
+
+      "Id": 104,
+
+      "Name": "Nikunj"
+
+    },
+
+    {
+
+      "Id": 105,
+
+      "Name": "Meet"
+
+    }
+
+  ],
+
+  "Treatment": [
+
+    {
+
+      "Id": 1105,
+
+      "patientId": 105,
+
+      "doctorId": 1
+
+    },
+
+    {
+
+      "Id": 1106,
+
+      "patientId": 104,
+
+      "doctorId": 1
+
+    },
+
+    {
+
+      "Id": 1107,
+
+      "patientId": 101,
+
+      "doctorId": 3
+
+    },
+
+    {
+
+      "Id": 1108,
+
+      "patientId": 105,
+
+      "doctorId": 2
+
+    },
+
+    {
+
+      "Id": 1109,
+
+      "patientId": 102,
+
+      "doctorId": 3
+
+    },
+
+    {
+
+      "Id": 1110,
+
+      "patientId": 103,
+
+      "doctorId": 3
+
+    }
+
+  ]
+
+}
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Question 3---
+
+
+
+
+Below points need to be considered while binding the leave history
+
+If the applied date of FromDate is greater than CurrentDate then show Edit and delete buttons.
+Get Leave TypeName and apply color mentioned  from the LeaveTypeList based on the  LeaveTypeID. 
+Get Leave StatusName from LeaveStatusList based on the LeaveStatusID.
+
+const LeaveTypesList=[
+
+{
+
+"LeaveTypeID": 6813,
+
+"ObjectName": "Casual Leave (CL)",
+
+“Color”:"Green"
+
+},
+
+{
+
+"LeaveTypeID": 6809,
+
+"ObjectName": “Comp Off (CO)”,
+
+“Color”:"Blue"
+
+},
+
+{
+
+"LeaveTypeID": 6812,
+
+"ObjectName": "Elective (EL)",
+
+“Color”:"orange"
+
+},
+
+{
+
+"LeaveTypeID": 6811,
+
+"ObjectName": "Privilege Leave (PL)",
+
+“Color”:"yellow"
+
+},
+
+{
+
+"LeaveTypeID": 6814,
+
+"ObjectName": "Sick Leave (SL)",
+
+“Color”:"purple"
+
+}
+
+];
+
+ 
+
+const LeaveStatusList=[
+
+{
+
+"LeaveStatusID": 1526,
+
+"ObjectName": "Approve"
+
+},
+
+{
+
+"LeaveStatusID": 1530,
+
+"ObjectName": "Applied"
+
+},
+
+{
+
+"LeaveStatusID": 1535,
+
+"ObjectName": "Reject"
+
+}
+
+]
+
+ 
+
+const userLeaveHistory = {
+
+"EmployeeName": "Vikas",
+
+"EmpCode": 101,
+
+"LeaveHistoryList": [
+
+{
+
+"FromDate": "2023-02-15",
+
+"FromDateDay": "2023-02-15 (Wed)",
+
+"ToDate": "2023-02-15",
+
+"ToDateDay": "2023-02-15 (Wed)",
+
+"Days": 1,
+
+"LeaveTypeID": 6811,
+
+"LeaveStatusID": 1526,
+
+"AppliedByName": "Nikunj Prajapati",
+
+"AppliedOn": "2023-02-21T18:49:31.41",
+
+},
+
+{
+
+"FromDate": "2023-02-06",
+
+"FromDateDay": "2023-02-06 (Mon)",
+
+"ToDate": "2023-02-06",
+
+"ToDateDay": "2023-02-06 (Mon)",
+
+"Days": 1,
+
+"LeaveTypeID": 6812,
+
+"AppliedByName": "Nikunj Prajapati",
+
+"AppliedOn": "2023-02-09T18:42:47.937",
+
+"LeaveStatusID": 1526,
+
+},
+
+{
+
+"FromDate": "2023-02-03",
+
+"FromDateDay": "2023-02-03 (Fri)",
+
+"ToDate": "2023-02-03",
+
+"ToDateDay": "2023-02-03 (Fri)",
+
+"Days": 0.5,
+
+"LeaveTypeID": 6809,
+
+"AppliedByName": "Nikunj Prajapati",
+
+"AppliedOn": "2023-02-03T00:00:00",
+
+"LeaveStatusID": 1535,
+
+},
+
+{
+
+"FromDate": "2023-02-03",
+
+"FromDateDay": "2023-04-03 (Fri)",
+
+"ToDate": "2023-02-03",
+
+"ToDateDay": "2023-04-03 (Fri)",
+
+"Days": 0.5,
+
+"LeaveTypeID": 6814,
+
+"AppliedByName": "Nikunj Prajapati",
+
+"AppliedOn": "2023-02-03T00:00:00",
+
+"LeaveStatusID": 1530,
+
+}
+
+]
+
+}
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
