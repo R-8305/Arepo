@@ -385,6 +385,18 @@ const userLeaveHistory = {
 }
 
 --------------------------------------------------------------------------------------------------------------------------------
+Question 4-
+Api call and get user’s post.
+
+-Call “https://gorest.co.in/public/v2/users” get API from JavaScript to get all the user data with the name and id.
+- Bind that api data with one Drop-down Dynamically. Where Drop-down option’s value will be id and text will be username dynamically.
+
+-Now call one more Api  “https://gorest.co.in/public/v2/users/id/posts” .,on the Drop-down change event where id will be selected value of the Drop-down and get that particular user’s posts data from API .
+
+- Bind that data in HTML table with proper format.
+
+---------------------------------------------------------------------------------------------------------------------
+Question 5--
 
 
 
