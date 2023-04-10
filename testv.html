@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    th,
+    td {
+        padding: 5px;
+    }
+</style>
+
+<body>
+
+    <select name="" id="Drop1">
+
+    </select>
+
+    <select name="" id="Drop2">
+
+    </select>
+
+    <input id="Marks" type="number" placeholder="Marks">
+    <button id="btn">Save</button>
+
+    <table id="Table" style="border-collapse: collapse;margin-top: 20px;" border>
+        <tr>
+            <th>Student Name</th>
+            <th>Subject 1</th>
+            <th>Subject 2</th>
+            <th>Subject 3</th>
+            <th>Subject 4</th>
+            <th>Subject 5</th>
+            <th>Result</th>
+        </tr>
+    </table>
+
+</body>
+
+<script>
+    const Students = [
+        {
+            name: "Test1"
+        },
+        {
+            name: "Test2"
+        },
+        {
+            name: "Test3"
+        },
+        {
+            name: "Test4"
+        },
+        {
+            name: "Test5"
+        },
+    ]
+
+    const Subject = [
+        {
+            name: "Sub1"
+        },
+        {
+            name: "Sub2"
+        },
+        {
+            name: "Sub3"
+        },
+        {
+            name: "Sub4"
+        },
+        {
+            name: "Sub5",
+        },
+    ]
+
+    const Data = []
+
+    const Drop1 = document.getElementById("Drop1")
+
+    let Show1 = `<option value="">Choose Student Name</option>`
+    Students.map((a) => {
+        Show1 += `<option value="${a.name}">${a.name}</option>`
+    })
+    Drop1.innerHTML = Show1
+
+
+
+
+
+    const Drop2 = document.getElementById("Drop2")
+
+    let Show2 = `<option value="">Choose Student Name</option>`
+    Subject.map((a) => {
+        Show2 += `<option value="${a.name}">${a.name}</option>`
+    })
+    Drop2.innerHTML = Show2
+
+
+    const btn = document.getElementById("btn")
+    const Marks = document.getElementById("Marks")
+
+    btn.addEventListener('click', () => {
+        const Data1 = Data.find((e) => e.Name == Drop1.value)
+        if (Data1) {
+            Data1.Marks.push({
+                Subject: Drop2.value,
+                Marks: Marks.value
+            })
+        }
+        else {
+            Data.push({
+                Name: Drop1.value,
+                Marks: [
+                    {
+                        Subject: Drop2.value,
+                        Marks: Marks.value
+                    }
+                ]
+            })
+        }
+        const FindData = (e, Name) => {
+            const Data = e.find((j) => j.Subject == Name)
+            if (Data) {
+                return Data.Marks
+            }
+            else {
+                return '-'
+            }
+        }
+
+        const Table = document.getElementById("Table")
+        let SHowData3 = `<tr><th>Student Name</th><th>Subject 1</th><th>Subject 2</th><th>Subject 3</th><th>Subject 4</th><th>Subject 5</th><th>Result</th></tr>`
+
+        Data.map((e) => {
+            SHowData3 += `<tr><td>${e.Name}</td><td>${FindData(e.Marks, 'Sub1')}</td><td>${FindData(e.Marks, 'Sub2')}</td><td>${FindData(e.Marks, 'Sub3')}</td><td>${FindData(e.Marks, 'Sub4')}</td><td>${FindData(e.Marks, 'Sub5')}</td><td>Result</td></tr>`
+        })
+
+
+
+
+        Table.innerHTML = SHowData3
+    })
+
+
+</script>
+
+</html>
